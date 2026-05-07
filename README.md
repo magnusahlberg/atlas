@@ -15,7 +15,7 @@ The files are the single source of truth. Atlas is just the interface.
 ## Requirements
 
 - [Obsidian](https://obsidian.md) (free)
-- [Claude Code](https://claude.ai/code) (terminal or Cursor IDE)
+- [Claude Code](https://claude.ai/code) (CLI, desktop app, or VS Code extension)
 - Optionally: Outlook, Teams, and Slack connected for open loop scanning
 
 ## Setup
