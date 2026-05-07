@@ -1,0 +1,21 @@
+# Ignore everything by default.
+# Only files explicitly unignored below are version controlled.
+/*
+/.*
+
+# ── Core system files ────────────────────────────────────────────────────────
+!/.gitignore
+!/CLAUDE.md
+!/README.md
+!/.mcp.json
+
+# ── Claude Code config ───────────────────────────────────────────────────────
+!/.claude/
+!/.claude/**
+/.claude/settings.local.json
+/.claude/worktrees/
+
+# ── Notes folder placeholder ─────────────────────────────────────────────────
+!/notes/
+/notes/*
+!/notes/.gitkeep
