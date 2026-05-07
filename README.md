@@ -19,8 +19,11 @@ It's built on [GTD](https://gettingthingsdone.com) (a popular method for managin
 3. Paste the prompt below and press Enter — Atlas will install itself and walk you through setup
 
 ```
-Set up Atlas in this folder. Check if git is available — if yes,
-run: git clone https://github.com/magnusahlberg/atlas .
+Set up Atlas in this folder. Check if git is available — if yes, run:
+  git init
+  git remote add origin https://github.com/magnusahlberg/atlas
+  git fetch origin main
+  git reset --hard origin/main
 If git is not available, download and extract
 https://github.com/magnusahlberg/atlas/archive/refs/heads/main.zip
 (GitHub ZIPs extract into a subfolder — move the contents up into
