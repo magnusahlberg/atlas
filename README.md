@@ -1,12 +1,16 @@
 # Atlas
 
-A personal operating system that carries your commitments so your head doesn't have to. Built on GTD, lives in [Obsidian](https://obsidian.md), operated through [Claude Code](https://claude.ai/code). The files are the single source of truth. Atlas reads them, updates them, and connects to your calendar, email, Teams, and Slack to find things you might have missed.
+Most productivity systems fail the same way: the overhead of maintaining them costs more than the clarity they provide. Atlas is different because you don't maintain it — Claude does.
 
-## What this is
+Atlas is a personal operating system built on [GTD](https://gettingthingsdone.com), stored as plain Markdown in [Obsidian](https://obsidian.md), and operated through [Claude Code](https://claude.ai/code). You talk to it in plain language. It captures what you say, scans your email and calendar for things you missed, keeps your lists current, and surfaces what matters — all without you touching a file.
+
+The files are the single source of truth. Atlas is just the interface.
+
+## How it works
 
 - **GTD methodology** — Inbox, Next Actions, Projects, Waiting For, Someday Maybe
-- **Obsidian** — plain Markdown files with wikilinks and Dataview-compatible inline fields
-- **Claude Code** — slash commands and hooks that automate the workflow and keep your lists current
+- **Obsidian** — plain Markdown with wikilinks and Dataview-compatible inline fields. Your data is portable and readable without any tool.
+- **Claude Code** — slash commands and hooks that automate the workflow. `/capture`, `/daily-plan`, `/weekly-review`, `/scan-loops`, and more.
 
 ## Requirements
 
