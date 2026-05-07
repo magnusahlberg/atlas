@@ -23,12 +23,8 @@ The files are the single source of truth. Atlas is just the interface.
 1. Clone this repo into a folder on your computer
 2. Open the folder in Obsidian as a vault
 3. Open the vault root in Claude Code (`claude` from the vault root, or open in Claude Code Desktop)
-4. Make hook scripts executable:
-   ```
-   chmod +x .claude/hooks/*.sh
-   ```
-5. Start a session — the SessionStart hook auto-loads your core GTD files into context
-6. Run `/setup` — Claude will ask you questions and write your personal files from the answers
+4. Start a session — the SessionStart hook auto-loads your core GTD files into context
+5. Run `/setup` — Claude will ask you questions and write your personal files from the answers
 
 ## Slash commands
 

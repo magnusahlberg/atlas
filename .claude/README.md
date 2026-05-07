@@ -42,7 +42,7 @@ This directory configures Atlas for Claude Code.
 
 ## Troubleshooting
 
-**SessionStart hook does nothing.** Make sure scripts are executable: `chmod +x .claude/hooks/*.sh`. Run manually from the vault root: `bash .claude/hooks/session-start.sh`. Output should show your loaded files.
+**SessionStart hook does nothing.** Run the script manually from the vault root: `bash .claude/hooks/session-start.sh`. Output should show your loaded files. If that fails, check that `$CLAUDE_PROJECT_DIR` is set.
 
 **Date comparisons look wrong.** The hooks use lexicographic comparison on YYYY-MM-DD, which is correct for ISO dates. If ordering looks wrong, the dates are not in YYYY-MM-DD format — the post-write-validate hook will warn on this.
 
