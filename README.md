@@ -2,110 +2,91 @@
 
 Most productivity systems fail the same way: the overhead of maintaining them costs more than the clarity they provide. Atlas is different because you don't maintain it — Claude does.
 
-Atlas is a personal operating system built on [GTD](https://gettingthingsdone.com), stored as plain Markdown in [Obsidian](https://obsidian.md), and operated through [Claude Code](https://claude.ai/code). You talk to it in plain language. It captures what you say, scans your email and calendar for things you missed, keeps your lists current, and surfaces what matters — all without you touching a file.
+Atlas is a personal operating system that captures your commitments, scans your email and calendar for things you missed, keeps your task lists current, and surfaces what matters next. You talk to it in plain language. It does the filing.
 
-The files are the single source of truth. Atlas is just the interface.
+It's built on [GTD](https://gettingthingsdone.com) (a popular method for managing work and commitments), stores everything as plain text files you own, and runs through [Claude Code](https://claude.ai/code).
 
-## How it works
+## What you need
 
-- **GTD methodology** — Inbox, Next Actions, Projects, Waiting For, Someday Maybe
-- **Obsidian** — plain Markdown with wikilinks and Dataview-compatible inline fields. Your data is portable and readable without any tool.
-- **Claude Code** — slash commands and hooks that automate the workflow. `/capture`, `/daily-plan`, `/weekly-review`, `/scan-loops`, and more.
+- [Obsidian](https://obsidian.md) — a free app for viewing and navigating your files
+- [Claude Code](https://claude.ai/code) — the AI that operates the system
+- Optionally: Outlook, Teams, or Slack connected so Atlas can scan for things you've missed
 
-## Requirements
+## Getting started
 
-- [Obsidian](https://obsidian.md) (free)
-- [Claude Code](https://claude.ai/code) (CLI, desktop app, or VS Code extension)
-- Optionally: Outlook, Teams, and Slack connected for open loop scanning
+**1. Get the files**
 
-## Setup
+Download or clone this repository into a folder on your computer.
 
-1. Clone this repo into a folder on your computer
-2. Open the folder in Obsidian as a vault
-3. Open the vault root in Claude Code (`claude` from the vault root, or open in Claude Code Desktop)
-4. Start a session — the SessionStart hook auto-loads your core GTD files into context
-5. Run `/setup` — Claude will ask you questions and write your personal files from the answers
+> Not sure how? Click the green **Code** button on this page, then **Download ZIP**. Unzip it somewhere you'll remember.
 
-## Slash commands
+**2. Open the folder in Obsidian**
 
-Type `/` in Claude Code to autocomplete.
+In Obsidian, choose "Open folder as vault" and select the folder you just downloaded. This gives you a clean view of your files as they grow.
+
+**3. Open the same folder in Claude Code**
+
+Open Claude Code and point it at the same folder. Your files will load automatically when the session starts.
+
+**4. Run `/setup`**
+
+Type `/setup` and press Enter. Atlas will ask you a series of questions — your role, your goals, your tools, your preferences — and write your personal files from your answers. This takes about five minutes and only needs to happen once.
+
+After that, you're ready to use it.
+
+## Daily use
+
+Type `/` in Claude Code to see all available commands.
 
 | Command | What it does |
 |---------|-------------|
-| `/setup` | First-run setup and ongoing personalization — role, goals, tools, preferences |
-| `/capture <text>` | Append to Inbox.md immediately, no classification |
-| `/process-inbox` | Clarify and route all Inbox.md items |
-| `/daily-plan` | Today's calendar, due items, top priorities, and follow-ups |
-| `/weekly-review` | Full weekly review: inbox, lists, goals, open loop scan |
-| `/scan-loops` | Scan email, calendar, Teams, Slack, meeting notes for missed captures |
-| `/meeting-prep <topic>` | Pull prior notes, related projects, people, and open items |
+| `/setup` | First-time setup, or update your profile and goals |
+| `/capture` | Quickly save a thought, task, or idea without stopping to organise it |
+| `/process-inbox` | Sort everything you've captured into the right place |
+| `/daily-plan` | See today's meetings, what's due, and your top priorities |
+| `/weekly-review` | Full weekly check-in: clear the inbox, review your lists, scan for missed items |
+| `/scan-loops` | Search your email, calendar, and messages for things that should be tracked but aren't |
+| `/meeting-prep` | Get a briefing before a meeting — prior notes, open items, relevant projects |
 
-## How the files connect
+You can also just talk to Atlas naturally: "what should I focus on this afternoon?", "capture that I need to follow up with Sarah", "am I on track with my goals?"
 
-```
-Goals.md
-  └── Projects.md (each project links to a goal)
-        └── Next Actions.md (each action links to a project)
-        └── Waiting For.md (each blocked item links to a project)
-```
+## How your information is organised
 
-Claude can trace any action back to the goal it serves. When you ask "what should I prioritize," it uses this chain plus due dates to give a real answer.
+Atlas keeps five lists:
+
+- **Inbox** — everything you capture, unfiltered. Processed regularly.
+- **Next Actions** — concrete things to do, grouped by context (at your desk, on a call, in a meeting, deep focus)
+- **Projects** — anything that takes more than one step to complete
+- **Waiting For** — things you've delegated or are blocked on
+- **Someday Maybe** — ideas you want to keep but aren't acting on yet
+
+Everything connects back to your goals. When you ask "what should I prioritise?", Atlas uses that chain to give you a real answer.
+
+## What Atlas can access
+
+Atlas only reads and writes files in your vault, plus any tools you connect during setup.
+
+| Tool | What Atlas can do |
+|------|------------------|
+| Your vault files | Read and write |
+| Email | Search and read |
+| Calendar | Search and read |
+| Teams / Slack | Search and read |
+| Web | Search |
+
+Atlas will never send an email, accept a meeting invite, or post a message on your behalf without asking you first.
 
 ## Tips
 
-**Be lazy with capture.** Dump raw thoughts. Don't pre-format. Claude does the organizing.
+**Be lazy with capture.** Don't organise as you go — just say it. Atlas sorts it later.
 
-**Process regularly.** An inbox that grows unchecked becomes noise. Process at least twice a week.
+**Run `/weekly-review` once a week.** It's the heartbeat of the system. Everything else flows from it.
 
-**Use context tags.** @deep-work, @computer, @call, @meeting tags in Next Actions let you batch work by mode. "What can I do @computer right now?" gets a useful answer.
+**Use `/scan-loops` before things fall through the cracks.** It takes two minutes and usually finds something.
 
-**Keep projects honest.** Every project needs a next action. If it's been sitting without movement, define the next step or move it to Someday Maybe. Claude flags this during reviews.
+## For contributors and developers
 
-**Scan loops before it's urgent.** `/scan-loops` takes two minutes and often surfaces things you forgot about.
-
-## What Claude has access to
-
-- All files in this vault (read and write)
-- Outlook email (search and read)
-- Outlook calendar (search and read)
-- Teams messages (search and read)
-- Slack (search and read)
-- Web search
-- File creation (documents, spreadsheets, presentations)
-
-Claude does not send emails, accept invites, or post messages without explicit permission.
-
-## Files in this repo
-
-| File | Purpose |
-|------|---------|
-| `CLAUDE.md` | Instructions that define how Claude operates this system |
-| `.claude/` | Hooks and slash commands |
-| `README.md` | This file |
-
-**Not in this repo** (created on first run, or personal to you):
-- `Inbox.md`, `Projects.md`, `Next Actions.md`, etc. — your working GTD files
-- `Reference/Personal.md` — your role, team, communication preferences
-- `Reference/Goals.md` — your strategic and operational goals
-- `notes/` — your meeting notes
-
-## Personalizing
-
-Sections in `CLAUDE.md` to review and adapt:
-
-- **Open loop scanning** — references a shared Slack canvas. Replace the canvas ID with your own or remove it.
-- **Tool access** — assumes Outlook, Teams, and Slack. Adjust for your tools.
-- **Formatting conventions** — timezone defaults to UTC. `/setup` will configure your local timezone in `Reference/Personal.md`.
-
-## Keeping it updated
-
-```
-git add CLAUDE.md README.md .claude/
-git commit -m "your message"
-git push
-```
-
-Personal data (notes, inbox, projects, goals) is gitignored and will never be committed.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to adapt Atlas for different tools (Gmail, Google Calendar, Notion, etc.), how to contribute, and technical details about the file structure.
 
 ## License
 

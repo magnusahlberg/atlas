@@ -5,7 +5,7 @@ Atlas is a personal operating system, so contributions should keep it focused an
 ## What's welcome
 
 - **Bug fixes** — something in a hook or command that doesn't work as described
-- **Tool adaptations** — making Atlas work with Gmail, Google Calendar, Notion, Linear, etc. alongside or instead of Outlook/Teams
+- **Tool adaptations** — making Atlas work with Gmail, Google Calendar, Notion, Linear, etc.
 - **Slash command improvements** — better prompts, clearer instructions, more useful output formats
 - **Setup flow improvements** — making `/setup` easier to complete and more useful
 - **Documentation** — clearer explanations, better examples
@@ -25,13 +25,34 @@ Atlas is a personal operating system, so contributions should keep it focused an
 
 ## Adapting for different tools
 
-The system assumes Outlook, Teams, and Slack because that's a common enterprise stack. If you're adapting for a different stack (Gmail + Google Calendar + Notion, for example), the key files to update are:
+The system defaults to Outlook, Teams, and Slack. To adapt for a different stack (Gmail + Google Calendar + Notion, for example):
 
 - `.claude/commands/scan-loops.md` — update the sources list
 - `.claude/commands/setup.md` — update the tool questions in Section 5
 - `.claude/commands/daily-plan.md` — update the calendar tool reference
 
-Keep the slash command descriptions in the frontmatter accurate — they show up in Claude Code's autocomplete.
+Keep the slash command `description` field in each file's frontmatter accurate — it's what shows in Claude Code's autocomplete.
+
+## File structure
+
+| File | Purpose |
+|------|---------|
+| `CLAUDE.md` | Core instructions — how Atlas behaves, what files exist, workflow rules |
+| `.claude/settings.json` | Hook definitions (which scripts run on which events) |
+| `.claude/hooks/` | Shell scripts that run automatically (session start, prompt submit, post-write validation) |
+| `.claude/commands/` | Slash command definitions — one file per command |
+| `README.md` | User-facing documentation |
+| `notes/.gitkeep` | Keeps the notes folder in git without committing personal notes |
+
+Personal files (inbox, projects, goals, meeting notes) are gitignored and never committed.
+
+## Keeping your fork updated
+
+```bash
+git add CLAUDE.md README.md .claude/
+git commit -m "your message"
+git push
+```
 
 ## Philosophy
 
