@@ -8,31 +8,27 @@ It's built on [GTD](https://gettingthingsdone.com) (a popular method for managin
 
 ## What you need
 
-- [Obsidian](https://obsidian.md) — a free app for viewing and navigating your files
 - [Claude Code](https://claude.ai/code) — the AI that operates the system
+- [Obsidian](https://obsidian.md) — a free app for viewing and navigating your files (optional but recommended)
 - Optionally: Outlook, Teams, or Slack connected so Atlas can scan for things you've missed
 
 ## Getting started
 
-**1. Get the files**
+1. Create a new empty folder on your computer
+2. Open that folder in Claude Code
+3. Paste the prompt below and press Enter — Atlas will install itself and walk you through setup
 
-Download or clone this repository into a folder on your computer.
+```
+Set up Atlas in this folder. Check if git is available — if yes,
+run: git clone https://github.com/magnusahlberg/atlas .
+If git is not available, download and extract
+https://github.com/magnusahlberg/atlas/archive/refs/heads/main.zip
+(GitHub ZIPs extract into a subfolder — move the contents up into
+this folder). Once the files are in place, read CLAUDE.md, then
+read and follow .claude/commands/setup.md to personalise the system.
+```
 
-> Not sure how? Click the green **Code** button on this page, then **Download ZIP**. Unzip it somewhere you'll remember.
-
-**2. Open the folder in Obsidian**
-
-In Obsidian, choose "Open folder as vault" and select the folder you just downloaded. This gives you a clean view of your files as they grow.
-
-**3. Open the same folder in Claude Code**
-
-Open Claude Code and point it at the same folder. Your files will load automatically when the session starts.
-
-**4. Run `/setup`**
-
-Type `/setup` and press Enter. Atlas will ask you a series of questions — your role, your goals, your tools, your preferences — and write your personal files from your answers. This takes about five minutes and only needs to happen once.
-
-After that, you're ready to use it.
+Setup takes about five minutes and only needs to happen once.
 
 ## Daily use
 
