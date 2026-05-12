@@ -7,19 +7,21 @@ Run the weekly review interactively. For each step, show me the relevant content
 
 Steps:
 
-1. **Empty and process Inbox.md.** For each item, walk me through the clarify decision: actionable / not / 2-min / multi-step / waiting on someone. Propose where each item should go.
+1. **Scan for open loops.** Run `/scan-loops` to pull items from email, calendar, Teams, Slack, meeting notes, and any shared canvas configured in `Reference/Personal.md`. Also review the past 2 weeks of calendar for missed commitments or follow-ups that didn't surface elsewhere. Append findings to `Inbox.md` after my approval. Do not process yet.
 
-2. **Review Next Actions.md.** Group by context tag. For each item, ask whether it is still the right next step. Flag stale items (untouched > 2 weeks based on file mtime if available, or by my judgement).
+2. **Mind sweep.** Ask me: "What's on your mind that isn't captured anywhere yet?" Wait for my response. Append everything I say to `Inbox.md` without filtering or classifying.
 
-3. **Review Waiting For.md.** Surface anything overdue or without a follow-up date. Propose follow-ups.
+3. **Process Inbox.md.** Now that the inbox is complete (existing items + newly scanned), walk me through each item: actionable / not / 2-min / multi-step / waiting on someone. Propose where each item should go. After processing, Inbox.md should be empty or contain only items I explicitly chose to defer.
 
-4. **Review Projects.md.** For each active project, confirm it has a defined next action and that the next action is captured in `Next Actions.md`. Flag stalled projects.
+4. **Review Next Actions.md.** Group by context tag. For each item, ask whether it is still the right next step. Flag stale items (untouched > 2 weeks).
 
-5. **Review Someday Maybe.md.** Ask if any items should be activated.
+5. **Review Waiting For.md.** Surface anything overdue or without a follow-up date. Propose follow-ups.
 
-6. **Review Reference/Goals.md.** Check for status changes. Propose updates only with my explicit approval (per CLAUDE.md rule).
+6. **Review Projects.md.** For each active project, confirm it has a defined next action captured in `Next Actions.md`. Flag stalled projects.
 
-7. **Open-loop scan.** Run `/scan-loops` to catch missed captures from email, calendar, Teams, Slack, meeting notes, and any shared canvas configured in `Reference/Personal.md`.
+7. **Review Someday Maybe.md.** Ask if any items should be activated.
+
+8. **Review Reference/Goals.md.** Check for status changes. Propose updates only with my explicit approval (per CLAUDE.md rule).
 
 At the end, summarize: what was processed, what was deferred, what needs my attention this week.
 
