@@ -81,6 +81,10 @@ Pull meeting notes selectively when:
 - Scanning for open loops. Check the last 7 days of notes for uncommitted action items.
 - The user references a specific past conversation or decision. Search by date or topic.
 
+## Skill authoring rules
+
+Skills and slash commands are shared project files. They must contain no hard-coded personal information (names, email addresses, Slack IDs, usernames, org-specific identifiers). Any user-specific values must be read at runtime from user-owned files — primarily `Reference/Personal.md`. This keeps skills reusable and avoids leaking personal data into project history.
+
 ## Additional files
 
 The user may add other reference documents to this folder over time (org charts, 4DX templates, governance docs). Use them as context when relevant but don't modify unless asked.
