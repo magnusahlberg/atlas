@@ -1,19 +1,8 @@
 ---
 description: Scan email, calendar, Teams, Slack, and recent notes for open loops not in the system.
-allowed-tools: Read, Grep, Glob, Bash
+allowed-tools: Read, Grep, Glob, Bash, mcp__claude_ai_Microsoft_365__outlook_email_search, mcp__claude_ai_Microsoft_365__outlook_calendar_search, mcp__claude_ai_Microsoft_365__teams_list_chats, mcp__claude_ai_Microsoft_365__chat_message_search, mcp__claude_ai_Slack__slack_search_public_and_private, mcp__claude_ai_Slack__slack_read_channel, mcp__claude_ai_Slack__slack_read_canvas
 ---
 
-Search connected tools for things that should be tracked but aren't yet. Sources to scan, in order:
+Read `.atlas/workflows/scan-loops.md` and follow it exactly.
 
-1. **Outlook email** (past 7 days): unanswered questions, action items, commitments I made.
-2. **Outlook calendar** (next 14 days): meetings needing prep or follow-up.
-3. **Teams**: recent messages needing a response.
-4. **Slack**: recent messages needing a response.
-5. **Shared canvas** (if configured in `Reference/Personal.md`): open agenda items and outstanding actions not yet captured.
-6. **Recent meeting notes** in `notes/` (last 7 days): uncommitted action items.
-
-For each potential open loop, cross-reference against `Inbox.md`, `Next Actions.md`, `Waiting For.md`, and `Projects.md` so I do not duplicate.
-
-Present findings as a list of proposed `Inbox.md` entries. Wait for my approval. After approval, append to `Inbox.md` and offer to run `/process-inbox` to clarify them.
-
-Format proposed entries with source tag, e.g. `[outlook] Reply to Mattias about Q2 budget` so I can trace where each came from during clarify.
+The request is: $ARGUMENTS

@@ -1,51 +1,64 @@
 # `.claude/` — Atlas config for Claude Code
 
-This directory configures Atlas for Claude Code.
+This directory configures Atlas for Claude Code. It holds no workflow logic. The workflows live in `.atlas/workflows/`, shared with every other harness; the files here are thin shims that point at them and declare tool permissions.
 
 ## Layout
 
 ```
+.atlas/
+  workflows/             # the workflows themselves, harness-neutral
+  bin/
+    atlas-context.sh     # loads core GTD context
+    atlas-lint.sh        # lints task files
 .claude/
   settings.json          # hook definitions
   hooks/
-    session-start.sh     # auto-loads core GTD files at session start
+    session-start.sh     # wrapper over atlas-context.sh
     user-prompt-submit.sh# date stamp on every prompt
-    post-write-validate.sh # lints task files after Write/Edit
+    post-write-validate.sh # wrapper over atlas-lint.sh
   commands/
-    weekly-review.md     # /weekly-review
-    process-inbox.md     # /process-inbox
-    scan-loops.md        # /scan-loops
-    capture.md           # /capture <text>
-    meeting-prep.md      # /meeting-prep <topic>
-    daily-plan.md        # /daily-plan
+    <name>.md            # /<name>, one shim per workflow
 ```
 
 ## Hooks
 
 | Event | Script | What it does |
 |-------|--------|--------------|
-| `SessionStart` | `session-start.sh` | Loads Personal.md, Goals.md, Inbox.md, Projects.md, Next Actions.md, Waiting For.md into context. Surfaces due and overdue items. |
+| `SessionStart` | `session-start.sh` | Runs `.atlas/bin/atlas-context.sh`. Loads Personal.md, Goals.md, Inbox.md, Projects.md, Next Actions.md, Waiting For.md. Surfaces due and overdue items and the wiki roster. |
 | `UserPromptSubmit` | `user-prompt-submit.sh` | Injects current date and time on every prompt. |
-| `PostToolUse` (Write\|Edit) | `post-write-validate.sh` | Warns on dates not in YYYY-MM-DD format in task files. |
+| `PostToolUse` (Write\|Edit) | `post-write-validate.sh` | Pulls the edited path from the hook payload and runs `.atlas/bin/atlas-lint.sh` on it. Warns on dates not in YYYY-MM-DD format in task files. |
 
 ## Commands
 
-| Command | File |
-|---------|------|
-| `/setup` | `commands/setup.md` |
-| `/capture <text>` | `commands/capture.md` |
-| `/process-inbox` | `commands/process-inbox.md` |
-| `/daily-plan` | `commands/daily-plan.md` |
-| `/weekly-review` | `commands/weekly-review.md` |
-| `/scan-loops` | `commands/scan-loops.md` |
-| `/meeting-prep <topic>` | `commands/meeting-prep.md` |
+One shim per workflow, all of the same shape:
+
+```markdown
+---
+description: <shown in autocomplete>
+allowed-tools: <tools this workflow may use>
+---
+
+Read `.atlas/workflows/<name>.md` and follow it exactly.
+
+The request is: $ARGUMENTS
+```
+
+`/setup`, `/capture`, `/file`, `/process-inbox`, `/focus`, `/daily-plan`, `/weekly-review`, `/scan-loops`, `/meeting-prep`, `/horizons`, `/ingest`, `/ask`, `/lint`.
+
+## Making changes
+
+- **Changing what a workflow does** — edit `.atlas/workflows/<name>.md`. Never the shim.
+- **Changing which tools it may use** — edit `allowed-tools` in the shim. Never the workflow body: tool identifiers are harness-specific and belong here.
+- **Adding a workflow** — write `.atlas/workflows/<name>.md`, then add a shim.
+
+Keep MCP tool names in `allowed-tools` in their stable form (`mcp__claude_ai_Slack__slack_send_message`). Connection-ID forms (`mcp__<uuid>__slack_send_message`) break when a connection is recreated.
 
 ## Troubleshooting
 
-**SessionStart hook does nothing.** Run the script manually from the vault root: `bash .claude/hooks/session-start.sh`. Output should show your loaded files. If that fails, check that `$CLAUDE_PROJECT_DIR` is set.
+**SessionStart hook does nothing.** Run the script manually from the vault root: `bash .atlas/bin/atlas-context.sh`. Output should show your loaded files. If the wrapper fails but the script works, check that `$CLAUDE_PROJECT_DIR` is set.
 
-**Date comparisons look wrong.** The hooks use lexicographic comparison on YYYY-MM-DD, which is correct for ISO dates. If ordering looks wrong, the dates are not in YYYY-MM-DD format — the post-write-validate hook will warn on this.
+**Date comparisons look wrong.** The scripts use lexicographic comparison on YYYY-MM-DD, which is correct for ISO dates. If ordering looks wrong, the dates are not in YYYY-MM-DD format — the lint hook will warn on this.
 
-**Hook output is too large.** SessionStart context is capped around 10,000 chars. If your core files exceed that, trim what gets injected in `session-start.sh`.
+**Hook output is too large.** SessionStart context is capped around 10,000 chars. If your core files exceed that, trim what gets injected in `.atlas/bin/atlas-context.sh`.
 
-**Don't want one of the hooks.** Remove its block from `settings.json`.
+**Don't want one of the hooks.** Remove its block from `settings.json`. The workflows still work; you just have to run the scripts yourself, as other harnesses do.

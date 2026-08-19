@@ -5,11 +5,16 @@
 
 # ── Core system files ────────────────────────────────────────────────────────
 !/.gitignore
+!/AGENTS.md
 !/CLAUDE.md
 !/README.md
 !/LICENSE
 !/CONTRIBUTING.md
 !/.mcp.json
+
+# ── Shared workflows and scripts ─────────────────────────────────────────────
+!/.atlas/
+!/.atlas/**
 
 # ── Claude Code config ───────────────────────────────────────────────────────
 !/.claude/
@@ -21,3 +26,14 @@
 !/notes/
 /notes/*
 !/notes/.gitkeep
+
+# ── Wiki and Sources placeholders ────────────────────────────────────────────
+!/Wiki/
+/Wiki/*
+!/Wiki/.gitkeep
+!/Sources/
+/Sources/*
+!/Sources/.gitkeep
+
+# ── Never ────────────────────────────────────────────────────────────────────
+.DS_Store
