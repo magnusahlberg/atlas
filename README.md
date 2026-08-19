@@ -44,14 +44,18 @@ Type `/` in Claude Code to see all available commands.
 | `/file` | File one thing straight to the right list, with a link back to the email or message it came from |
 | `/process-inbox` | Sort everything you've captured into the right place |
 | `/daily-plan` | See today's meetings, what's due, and your top priorities |
+| `/focus` | "I have an hour" — get the best 3-5 things to do in the time you actually have |
 | `/weekly-review` | Full weekly check-in: clear the inbox, review your lists, scan for missed items |
 | `/scan-loops` | Search your email, calendar, and messages for things that should be tracked but aren't |
 | `/meeting-prep` | Get a briefing before a meeting — prior notes, open items, relevant projects |
+| `/horizons` | Monthly scan: five questions that surface what's coming before anyone asks |
 | `/ingest` | Fold a meeting note or document into your knowledge wiki |
 | `/ask` | Ask a question and get an answer from the wiki, with sources |
 | `/lint` | Health-check the wiki: contradictions, stale pages, gaps |
 
 You can also just talk to Atlas naturally: "what should I focus on this afternoon?", "capture that I need to follow up with Sarah", "am I on track with my goals?"
+
+`/horizons` is the one command that needs a file you create yourself: `Reference/Strategic-Agenda.md`, your own agenda for a transformation or focus area you are driving. `/horizons` populates its Radar; `/daily-plan` reads it to flag pushes that have gone quiet. Skip it if you are not carrying that kind of remit.
 
 ## Other AI agents
 
@@ -134,7 +138,7 @@ Atlas only reads and writes files in your vault, plus any tools you connect duri
 | Teams / Slack | Search and read |
 | Web | Search |
 
-Atlas will never send an email, accept a meeting invite, or post a message on your behalf without asking you first.
+Atlas will never send an email, accept a meeting invite, or post a message to anyone else on your behalf without asking you first. The one message it sends unprompted is a direct message to *you*: `/daily-plan` delivers your plan to your own chat so it is on your phone. Drop step 6 of `.atlas/workflows/daily-plan.md` if you would rather it did not.
 
 ## Tips
 

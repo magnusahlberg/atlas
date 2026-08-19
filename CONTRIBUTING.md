@@ -61,8 +61,10 @@ Keep the `description` field in each shim's frontmatter accurate — it's what s
 | `.claude/settings.json` | Hook definitions (which scripts run on which events) |
 | `.claude/hooks/` | Thin wrappers over `.atlas/bin/`, plus the prompt date stamp |
 | `.claude/commands/` | Slash command shims — one per workflow |
+| `.claude/README.md` | How the Claude Code layer is wired, plus troubleshooting |
 | `README.md` | User-facing documentation |
 | `notes/.gitkeep` | Keeps the notes folder in git without committing personal notes |
+| `Wiki/.gitkeep`, `Sources/.gitkeep` | Same, for the optional knowledge layer |
 
 Personal files (inbox, projects, goals, tools, meeting notes) are gitignored and never committed.
 
@@ -72,13 +74,17 @@ Personal files (inbox, projects, goals, tools, meeting notes) are gitignored and
 2. If you touched a script, run it directly: `bash .atlas/bin/atlas-context.sh`.
 3. If you touched a workflow body, sanity-check it on a second agent by asking it to read `AGENTS.md` and then the workflow file. Anything that only works on Claude Code belongs in the shim, not the body.
 
-## Keeping your fork updated
+## Committing your own changes
+
+The `.gitignore` ignores everything by default and unignores only system files, so personal content cannot be committed by accident. To push a change to your fork:
 
 ```bash
-git add AGENTS.md CLAUDE.md README.md .atlas/ .claude/
+git add AGENTS.md CLAUDE.md README.md CONTRIBUTING.md .gitignore .atlas/ .claude/
 git commit -m "your message"
 git push
 ```
+
+Run `git status --porcelain -uall` first and check nothing personal appears. If you add a new system file at the repo root, it needs an `!/<name>` line in `.gitignore` or git will not see it.
 
 ## Philosophy
 
