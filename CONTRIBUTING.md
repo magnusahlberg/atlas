@@ -71,7 +71,7 @@ Personal files (inbox, projects, goals, tools, meeting notes) are gitignored and
 ## Testing a change
 
 1. Run the affected workflow in Claude Code against a real vault.
-2. If you touched a script, run it directly: `bash .atlas/bin/atlas-context.sh`.
+2. If you touched a script, run it directly. For example: `bash .atlas/bin/atlas-context.sh` or `bash .atlas/bin/atlas-lint.sh`.
 3. If you touched a workflow body, sanity-check it on a second agent by asking it to read `AGENTS.md` and then the workflow file. Anything that only works on Claude Code belongs in the shim, not the body.
 
 ## Committing your own changes
