@@ -4,7 +4,44 @@ Most productivity systems fail the same way: the overhead of maintaining them co
 
 Atlas is a personal operating system that captures your commitments, scans your email and calendar for things you missed, keeps your task lists current, and surfaces what matters next. You talk to it in plain language. It does the filing.
 
-It's built on [GTD](https://gettingthingsdone.com) (a popular method for managing work and commitments), stores everything as plain text files you own, and runs through [Claude Code](https://claude.ai/code) or any other AI coding agent.
+It stores everything as plain text files you own, and runs through [Claude Code](https://claude.ai/code) or any other AI coding agent. If you've never kept a system like this before, the next section is the whole idea in two minutes.
+
+## Never used a system like this?
+
+Then start here. You don't need to have read anything first.
+
+Right now your commitments are probably spread across your head, your inbox, a notes app, and a low background hum of "am I forgetting something?". That works until the week it doesn't.
+
+The method Atlas uses is called [GTD](https://gettingthingsdone.com), for Getting Things Done. Skip the book. The whole thing reduces to four moves:
+
+1. **Get it out of your head.** Anything you're holding onto goes into one list, straight away, unsorted. Your memory is for thinking with, not for storage.
+2. **Decide what each thing actually is.** Later, in one pass: is this a task, a project, something someone else owes you, or something you're never realistically going to do?
+3. **Keep the lists trustworthy.** A list you don't trust is a list you start ignoring, and then you're back to carrying it all in your head. So you look over everything on a regular rhythm.
+4. **Work from the lists, not from your inbox.** When you have twenty minutes, you look at what genuinely fits twenty minutes.
+
+Almost everyone manages 1 and 4. Almost everyone eventually fails at 2 and 3. The sorting and the reviewing are tedious, and the week you fall behind is the week the system quietly stops being true.
+
+Steps 2 and 3 are the parts Atlas does. You capture and you decide; it files, sorts, chases, and tells you when something has gone stale.
+
+## The five lists
+
+Everything Atlas keeps lives in one of five plain-text files. That's the whole data model:
+
+| List | What goes in it |
+|------|-----------------|
+| **Inbox** | Everything you capture, unsorted. A holding pen, emptied regularly. Nothing lives here permanently. |
+| **Next Actions** | Concrete single steps you could actually start. Grouped by where you'd do them: at your desk, on a call, in a meeting, or in deep focus. |
+| **Projects** | Anything needing more than one step. Each one points at its next action, so a project can't stall silently. |
+| **Waiting For** | Things you're blocked on or have delegated. This is the list that stops people quietly dropping what you asked them for. |
+| **Someday Maybe** | Ideas worth keeping but not acting on. Reviewed monthly, guilt-free. |
+
+Two distinctions do most of the work, and both are worth getting right early.
+
+**A project is not a task.** "Sort out the office move" isn't something you can sit down and do. "Email the landlord about access dates" is. If an item makes you feel vaguely tired rather than ready to start, it's a project wearing a task's clothes, and it needs a real next action underneath it.
+
+**Your job and their job are different lists.** If you're waiting on someone, it goes in Waiting For and Atlas reminds you to chase. If you need to raise something with them, that's still your task — it goes in Next Actions under `@meeting`, tagged with their name, and surfaces when you next meet.
+
+Above the lists sit your goals, written during setup. Every task can trace back to one. That chain is what lets Atlas answer "what should I prioritise?" with something better than "the oldest thing".
 
 ## What you need
 
@@ -31,11 +68,53 @@ this folder). Once the files are in place, read AGENTS.md, then
 read and follow .atlas/workflows/setup.md to personalise the system.
 ```
 
-Setup takes about five minutes and only needs to happen once.
+Setup takes about five minutes and only happens once. It's a conversation, not a form: Atlas asks about your role, the people you work with, how you like to be written to, and what you're trying to achieve this year. Answer roughly — you can change any of it later by running `/setup` again. Questions that don't apply to you, say so and it moves on.
 
-## Daily use
+## Your first week
 
-Type `/` in Claude Code to see all available commands.
+Setup writes your profile and goals. The habit is what makes the system real, and it takes about a week to form. Four commands are enough to start.
+
+**Day one, right after setup: empty your head.** Set a timer for fifteen minutes and tell Atlas everything you're carrying. Don't organise it, don't filter it, don't stop to decide whether it matters. Half sentences are fine.
+
+```
+/capture book the dentist
+/capture that thing with the Q3 numbers I keep not looking at
+/capture ask Priya whether we're still doing the offsite
+```
+
+Thirty to fifty items is normal. Feeling slightly unwell at the length of the list is also normal, and is rather the point: all of it was in your head a minute ago.
+
+**Day two: sort it.**
+
+```
+/process-inbox
+```
+
+Atlas walks the list one item at a time, proposes where each thing belongs, and you say yes or correct it. The first pass takes twenty minutes or so. After that it's five. Plenty of items turn out not to matter and get deleted, which is a legitimate and underrated outcome.
+
+**Every morning after that:**
+
+```
+/daily-plan
+```
+
+Meetings, what's due, what to focus on, and who's waiting on you.
+
+**End of week one:**
+
+```
+/weekly-review
+```
+
+This is the one that matters. It walks your lists, catches projects with no next action, flags what's going stale, and checks you're still pointed at your goals. Skip it and the system decays within a fortnight. Put it in your calendar now — Friday afternoon works well.
+
+Everything else can wait until the basics feel automatic. When they do, add `/file` and `/scan-loops`: those are the two that stop things falling through the cracks between reviews.
+
+**Two things worth knowing early.** Nothing here has to be tidy. The lists are working documents, and Atlas proposes fixes rather than expecting you to keep them pristine. And if a bad week means you fall behind, you haven't broken anything — run `/weekly-review` and carry on. Recovering is the normal state of a system like this, not a failure of it.
+
+## All the commands
+
+The handful in the last section cover most days. Here's everything, for when you want more. Type `/` in Claude Code to see the list at any time.
 
 | Command | What it does |
 |---------|-------------|
@@ -74,18 +153,6 @@ What you lose outside Claude Code is convenience, not capability:
 | Email, calendar, and chat access | Connectors | Depends on what you have connected |
 
 `AGENTS.md` tells the agent to do the first three itself, so it works either way.
-
-## How your information is organised
-
-Atlas keeps five lists:
-
-- **Inbox** — everything you capture, unfiltered. Processed regularly.
-- **Next Actions** — concrete things to do, grouped by context (at your desk, on a call, in a meeting, deep focus)
-- **Projects** — anything that takes more than one step to complete
-- **Waiting For** — things you've delegated or are blocked on
-- **Someday Maybe** — ideas you want to keep but aren't acting on yet
-
-Everything connects back to your goals. When you ask "what should I prioritise?", Atlas uses that chain to give you a real answer.
 
 ## Getting things out of your inbox
 
@@ -142,13 +209,15 @@ Atlas will never send an email, accept a meeting invite, or post a message to an
 
 ## Tips
 
-**Be lazy with capture.** Don't organise as you go — just say it. Atlas sorts it later.
+**Be lazy with capture.** Don't organise as you go — just say it, mid-sentence, badly. Atlas sorts it later. The moment capture feels like effort, you stop doing it, and then nothing else works.
 
-**Use `/file` for anything with a source.** Emails and messages are the things most likely to get lost, and the things where you most often need to see the original later.
+**Use `/file` for anything with a source.** Emails and messages get lost more than anything else, and are what you most often need to reopen later.
 
-**Run `/weekly-review` once a week.** It's the heartbeat of the system. Everything else flows from it.
+**Protect the weekly review.** It's the heartbeat. Everything else flows from it, and it's the first thing people drop.
 
-**Use `/scan-loops` before things fall through the cracks.** It takes two minutes and usually finds something.
+**Use `/scan-loops` when you feel behind.** Two minutes, and it usually finds something you'd forgotten you owed someone.
+
+**Write the next action, not the topic.** "Budget" is not an action. "Draft the Q3 budget outline" is. Atlas will push you on this during `/process-inbox`; it's worth letting it.
 
 ## For contributors and developers
 
