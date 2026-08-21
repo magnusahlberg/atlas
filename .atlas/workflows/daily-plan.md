@@ -18,6 +18,8 @@ Build my plan for today. Read `Reference/Tools.md` for which calendar and messag
 
 5. **Buffer.** Where are the gaps in my calendar where deep work can actually happen? Note the length of each gap.
 
+5a. **Capacity check.** Run the `capacity-check` workflow over the next 7 days. Only surface it if it finds something at risk — don't repeat a clean result every day.
+
 5b. **Suggested actions for the day.** Using the gaps identified in step 5, surface the best 3–5 actions from `Next Actions.md` to fill them. Apply this ranking:
    1. Overdue or due today — surface first.
    2. Context fit — match the action's context tag to the gap length. Deep work (`@deep-work`) needs 45+ min uninterrupted. Computer tasks (`@computer`) fit 15–30 min. Skip `@meeting` and `@errand` items unless a meeting or errand is imminent.

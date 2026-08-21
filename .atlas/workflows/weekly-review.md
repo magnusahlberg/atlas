@@ -26,7 +26,9 @@ Steps:
 
 9. **Ingest the week's sources.** If `Wiki/SCHEMA.md` exists, run the `ingest` workflow over anything added to `notes/` or `Sources/` since the last ingest logged in `Wiki/log.md`. This keeps the knowledge layer current while the week is still fresh. Skip if the wiki does not exist.
 
-10. **Strategic agenda review.** If `Reference/Strategic-Agenda.md` exists, read it. For each item in the initiative backlog, ask: should a concrete push happen this week — and to whom? Propose a next action for any item where the answer is yes. Flag active items in Minor Deviation or with due dates in the next 2 weeks. If anything was communicated since the last review, propose an update to the communication log.
+10. **Capacity check.** Run the `capacity-check` workflow over the next 14 days. Surface anything due that has no realistic open time behind it.
+
+11. **Strategic agenda review.** If `Reference/Strategic-Agenda.md` exists, read it. For each item in the initiative backlog, ask: should a concrete push happen this week — and to whom? Propose a next action for any item where the answer is yes. Flag active items in Minor Deviation or with due dates in the next 2 weeks. If anything was communicated since the last review, propose an update to the communication log.
 
 At the end, summarize: what was processed, what was deferred, what needs my attention this week.
 

@@ -102,6 +102,7 @@ The files in `.atlas/workflows/` are the source of truth for each workflow. This
 - **lint**: health-check the wiki. Monthly.
 - **setup**: interactive personalisation. Writes `Reference/Personal.md`, `Goals.md`, and `Tools.md`.
 - **focus**: pick the best 3-5 actions for a given time window.
+- **capacity-check**: check whether upcoming deadlines have open calendar time behind them before they're overdue. Run standalone or from `daily-plan`/`weekly-review`.
 
 ## Updating files
 
