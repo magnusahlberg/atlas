@@ -124,6 +124,7 @@ The handful in the last section cover most days. Here's everything, for when you
 | `/process-inbox` | Sort everything you've captured into the right place |
 | `/daily-plan` | See today's meetings, what's due, and your top priorities |
 | `/focus` | "I have an hour" — get the best 3-5 things to do in the time you actually have |
+| `/capacity-check` | Check whether what's due actually has open calendar time behind it |
 | `/weekly-review` | Full weekly check-in: clear the inbox, review your lists, scan for missed items |
 | `/scan-loops` | Search your email, calendar, and messages for things that should be tracked but aren't |
 | `/meeting-prep` | Get a briefing before a meeting — prior notes, open items, relevant projects |

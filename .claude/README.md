@@ -43,7 +43,7 @@ Read `.atlas/workflows/<name>.md` and follow it exactly.
 The request is: $ARGUMENTS
 ```
 
-`/setup`, `/capture`, `/file`, `/process-inbox`, `/focus`, `/daily-plan`, `/weekly-review`, `/scan-loops`, `/meeting-prep`, `/horizons`, `/ingest`, `/ask`, `/lint`.
+`/setup`, `/capture`, `/file`, `/process-inbox`, `/focus`, `/capacity-check`, `/daily-plan`, `/weekly-review`, `/scan-loops`, `/meeting-prep`, `/horizons`, `/ingest`, `/ask`, `/lint`.
 
 ## Making changes
 
