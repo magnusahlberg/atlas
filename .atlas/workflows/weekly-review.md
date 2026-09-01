@@ -8,11 +8,11 @@ Run the weekly review interactively. For each step, show me the relevant content
 
 Steps:
 
-1. **Scan for open loops.** Run the `scan-loops` workflow to pull items from mail, calendar, chat, meeting notes, and any shared canvas configured in `Reference/Personal.md`. Also review the past 2 weeks of calendar for missed commitments or follow-ups that didn't surface elsewhere. Append findings to `Inbox.md` after my approval. Do not process yet.
+1. **Process Inbox.md.** Run the `process-inbox` workflow over whatever is already sitting in `Inbox.md` from the week. After processing, Inbox.md should be empty or contain only items I explicitly chose to defer.
 
-2. **Mind sweep.** Ask me: "What's on your mind that isn't captured anywhere yet?" Wait for my response. Append everything I say to `Inbox.md` without filtering or classifying.
+2. **Scan for open loops.** Run the `scan-loops` workflow to pull items from mail, calendar, chat, meeting notes, and any shared canvas configured in `Reference/Personal.md`. Also review the past 2 weeks of calendar for missed commitments or follow-ups that didn't surface elsewhere. Scan-loops tags each finding with its destination (`[inbox]`, `[waiting-for]`, `[next-action]`) — after my approval, file each one straight to that destination. Do not route findings through `Inbox.md`.
 
-3. **Process Inbox.md.** Now that the inbox is complete (existing items + newly scanned), walk me through each item: actionable / not / 2-min / multi-step / waiting on someone. Propose where each item should go. After processing, Inbox.md should be empty or contain only items I explicitly chose to defer.
+3. **Mind sweep.** Ask me: "What's on your mind that isn't captured anywhere yet?" Wait for my response. For each item I raise, classify it on the spot using the same logic as `process-inbox` (actionable / not / 2-min / multi-step / waiting on someone), propose where it goes, and file it directly after my approval. Do not stage these in `Inbox.md` first — that would mean processing them twice.
 
 4. **Review Next Actions.md.** Group by context tag. For each item, ask whether it is still the right next step. Flag stale items (untouched > 2 weeks).
 
